@@ -1,3 +1,4 @@
+// search what you want and batton input 
 const searchBook =  () => {
     const searchField = document.getElementById('search-area');
     const searchText = searchField.value;
@@ -19,22 +20,29 @@ const searchBook =  () => {
     }
      
 }
+
+// dispaly book details --------
 const displaySearchResult =  books => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     // console.log(books.docs);
 
     const bookes = books.docs;
-    // console.log(bookes);
+    // console.log(bookes.length);
 
+    // dispaly total result ------------------------
+    const totalResult = document.getElementById('total-result');
+    totalResult.innerText = `Total Result Found: ${bookes.length}`;
+
+    // creating a div and dispaly the value --------------
     for(const book in bookes){
-        console.log(bookes[book].title);
+        // console.log(bookes[book]);
 
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-            <div style="padding: 10px; background-color: #f6f6f6;" class="card h-100">
-                <img width="100%" src="https://covers.openlibrary.org/b/id/${bookes[book].cover_i}.jpg" />
+            <div style="padding: 10px; background-color: #f6f6f6; border-radius: 10px" class="card h-100">
+                <img style="border-radius: 10px;" width="100%" src="https://covers.openlibrary.org/b/id/${bookes[book].cover_i}.jpg" />
                 <div class="card-body">
                     
                     <h5 style="margin-top: 10px" class="card-title">${bookes[book].title}</h5>
